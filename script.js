@@ -295,3 +295,379 @@ restartBtn.addEventListener(
     universePage.style.display =
     "flex";
 });
+
+/* =====================================
+   CANVAS UNIVERSE
+===================================== */
+
+const canvas =
+document.getElementById(
+"universeCanvas"
+);
+
+const ctx =
+canvas.getContext("2d");
+
+function resizeCanvas(){
+
+    canvas.width =
+    window.innerWidth;
+
+    canvas.height =
+    window.innerHeight;
+}
+
+resizeCanvas();
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+/* =====================================
+   STARS
+===================================== */
+
+const stars = [];
+
+for(let i=0;i<700;i++){
+
+    stars.push({
+
+        x:
+        Math.random()*
+        window.innerWidth,
+
+        y:
+        Math.random()*
+        window.innerHeight,
+
+        size:
+        Math.random()*2.5,
+
+        alpha:
+        Math.random()
+    });
+}
+
+/* =====================================
+   SPARKLES
+===================================== */
+
+for(let i=0;i<120;i++){
+
+    const sparkle =
+    document.createElement("div");
+
+    sparkle.className =
+    "sparkle";
+
+    sparkle.style.left =
+    Math.random()*100 + "%";
+
+    sparkle.style.top =
+    Math.random()*100 + "%";
+
+    sparkle.style.animationDelay =
+    Math.random()*2 + "s";
+
+    document.body.appendChild(
+    sparkle
+    );
+}
+
+/* =====================================
+   SHOOTING STARS
+===================================== */
+
+function createShootingStar(){
+
+    const star =
+    document.createElement("div");
+
+    star.className =
+    "shooting-star";
+
+    star.style.left =
+    Math.random()*100 + "%";
+
+    star.style.top =
+    Math.random()*40 + "%";
+
+    document.body.appendChild(
+    star
+    );
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },2000);
+}
+
+setInterval(
+createShootingStar,
+4500
+);
+
+/* =====================================
+   GALAXY
+===================================== */
+
+let rotation = 0;
+
+function drawUniverse(){
+
+    ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+    );
+
+    const cx =
+    canvas.width / 2;
+
+    const cy =
+    canvas.height / 2;
+
+    /* STAR FIELD */
+
+    stars.forEach(star=>{
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+        `rgba(
+            255,
+            180,
+            240,
+            ${star.alpha}
+        )`;
+
+        ctx.arc(
+        star.x,
+        star.y,
+        star.size,
+        0,
+        Math.PI*2
+        );
+
+        ctx.fill();
+    });
+
+    /* BLACK HOLE */
+
+    const holeGradient =
+    ctx.createRadialGradient(
+    cx,
+    cy,
+    0,
+    cx,
+    cy,
+    160
+    );
+
+    holeGradient.addColorStop(
+    0,
+    "#000"
+    );
+
+    holeGradient.addColorStop(
+    0.5,
+    "rgba(70,0,100,.5)"
+    );
+
+    holeGradient.addColorStop(
+    1,
+    "rgba(255,0,180,.1)"
+    );
+
+    ctx.beginPath();
+
+    ctx.fillStyle =
+    holeGradient;
+
+    ctx.arc(
+    cx,
+    cy,
+    120,
+    0,
+    Math.PI*2
+    );
+
+    ctx.fill();
+
+    /* GALAXY RINGS */
+
+    ctx.save();
+
+    ctx.translate(
+    cx,
+    cy
+    );
+
+    rotation += 0.002;
+
+    ctx.rotate(rotation);
+
+    for(let i=0;i<8;i++){
+
+        ctx.beginPath();
+
+        ctx.strokeStyle =
+        `hsla(
+        ${290+i*10},
+        100%,
+        70%,
+        .4
+        )`;
+
+        ctx.lineWidth = 4;
+
+        ctx.ellipse(
+
+        0,
+        0,
+
+        150 + i*40,
+
+        50 + i*18,
+
+        i*0.3,
+
+        0,
+        Math.PI*2
+        );
+
+        ctx.stroke();
+    }
+
+    ctx.restore();
+
+    /* ORBIT PARTICLES */
+
+    for(let i=0;i<350;i++){
+
+        const angle =
+
+        rotation*4 +
+
+        i*0.12;
+
+        const radius =
+
+        130 +
+
+        (i%80)*5;
+
+        const x =
+
+        cx +
+
+        Math.cos(angle)
+        * radius;
+
+        const y =
+
+        cy +
+
+        Math.sin(angle)
+        * radius
+        * .45;
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+        "rgba(255,120,220,.9)";
+
+        ctx.arc(
+        x,
+        y,
+        2,
+        0,
+        Math.PI*2
+        );
+
+        ctx.fill();
+    }
+
+    /* HEART PARTICLES */
+
+    ctx.save();
+
+    ctx.translate(
+    cx,
+    cy - 180
+    );
+
+    for(let t=0;t<360;t+=4){
+
+        const rad =
+        t*Math.PI/180;
+
+        const x =
+        16*Math.pow(
+        Math.sin(rad),
+        3
+        );
+
+        const y =
+        -(
+        13*Math.cos(rad)
+        -
+        5*Math.cos(2*rad)
+        -
+        2*Math.cos(3*rad)
+        -
+        Math.cos(4*rad)
+        );
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+        "rgba(255,80,200,.9)";
+
+        ctx.arc(
+        x*6,
+        y*6,
+        2.5,
+        0,
+        Math.PI*2
+        );
+
+        ctx.fill();
+    }
+
+    ctx.restore();
+
+    requestAnimationFrame(
+    drawUniverse
+    );
+}
+
+drawUniverse();
+
+/* =====================================
+   AUTO MUSIC TRY
+===================================== */
+
+document.addEventListener(
+"click",
+()=>{
+
+    if(!playing){
+
+        bgMusic.play()
+        .then(()=>{
+
+            playing = true;
+
+            musicBtn.innerText =
+            "🎵 ปิดเพลง";
+
+        })
+        .catch(()=>{});
+    }
+
+},{once:true});
