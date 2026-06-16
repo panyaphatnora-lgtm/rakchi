@@ -1,0 +1,229 @@
+```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>สุขสันต์วันเกิดนะ ชิ ❤️</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- =========================
+     CHAT PAGE
+========================= -->
+
+<section id="chatPage">
+
+    <div class="heart-bg"></div>
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+            วันนี้
+        </div>
+
+        <div class="message-wrapper">
+
+            <div class="file-card">
+
+                <div class="file-icon">
+                    📄
+                </div>
+
+                <div class="file-info">
+
+                    <h3>
+                        การ์ดวันเกิดของชิ ❤️.html
+                    </h3>
+
+                    <p>
+                        แตะเพื่อเปิดความทรงจำสุดพิเศษ
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button id="openUniverseBtn">
+                ดาวน์โหลดและเปิดการ์ด
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     LOADING PAGE
+========================= -->
+
+<section id="loadingPage">
+
+    <div class="loading-content">
+
+        <div class="loader-heart">
+            ❤️
+        </div>
+
+        <h2>
+            กำลังเปิดการ์ดของชิ...
+        </h2>
+
+        <div class="loading-bar">
+
+            <div class="loading-fill"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     UNIVERSE PAGE
+========================= -->
+
+<section id="universePage">
+
+    <canvas id="universeCanvas"></canvas>
+
+    <div class="universe-overlay">
+
+        <div id="heartPortal">
+
+            <div class="heart-glow"></div>
+
+            <div class="heart-core">
+                ❤️
+            </div>
+
+        </div>
+
+        <h1 class="universe-title">
+            สุขสันต์วันเกิดนะ ชิ ❤️
+        </h1>
+
+        <p class="universe-subtitle">
+            กดหัวใจเพื่อเปิดความทรงจำ
+        </p>
+
+        <div id="floatingMessages"></div>
+
+    </div>
+
+    <button id="musicBtn">
+        🎵 เปิดเพลง
+    </button>
+
+</section>
+
+<!-- =========================
+     ALBUM PAGE
+========================= -->
+
+<section id="albumPage">
+
+    <div class="album-card">
+
+        <img
+            id="albumImage"
+            src="./img/1.jpg"
+            alt="รูปคู่">
+
+        <h2>
+            สุขสันต์วันเกิดนะ ชิ ❤️
+        </h2>
+
+        <p id="albumText">
+            ขอบคุณที่เข้ามาเป็นความสุขของฉัน
+        </p>
+
+        <div class="album-buttons">
+
+            <button id="prevBtn">
+                ← ก่อนหน้า
+            </button>
+
+            <button id="nextBtn">
+                ถัดไป →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FINAL PAGE
+========================= -->
+
+<section id="finalPage">
+
+    <div class="final-box">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h1>
+            สุขสันต์วันเกิดนะ ชิ ❤️
+        </h1>
+
+        <p>
+
+            ขอบคุณที่เข้ามาเป็นความสุข
+            ในทุกวันของฉัน
+
+            <br><br>
+
+            ขอให้เธอมีรอยยิ้มเยอะ ๆ
+            และมีความสุขในทุกช่วงเวลา
+
+            <br><br>
+
+            รักเธอที่สุดในจักรวาล
+
+            ✨❤️✨
+
+        </p>
+
+        <button id="restartBtn">
+            ดูอีกครั้ง
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     AUDIO
+========================= -->
+
+<audio id="bgMusic" loop>
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<!-- =========================
+     SCRIPT
+========================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
+```
