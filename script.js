@@ -47,6 +47,10 @@ document.getElementById("nextBtn");
 const restartBtn =
 document.getElementById("restartBtn");
 
+document.getElementById("Aniversary").addEventListener("click", function () {
+    window.location.href = "https://rakchi.panyaphatnora.workers.dev/";
+});
+
 /* =====================================
    HEART BACKGROUND
 ===================================== */
