@@ -875,3 +875,32 @@ body{
         font-size:14px;
     }
 }
+#Aniversary{
+    width:100%;
+
+    margin-top:24px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    background:
+    linear-gradient(
+        45deg,
+        #ff4db8,
+        #874eff,
+        #4588ff
+    );
+
+    transition:.35s;
+}
